@@ -1,0 +1,22 @@
+header {
+  margin-top: 15px;
+}
+
+section {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.genre-button {
+  background-color: #fff;
+  border: 1px solid black;
+  color: #000;
+  padding: 13px 50px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  border-radius: 4px;
+}
