@@ -1,33 +1,40 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
-const Controller = () => {
-  const [selected, setSelected] = useState();
+const Controller = ({ selected }: any) => {
+  useEffect(() => {
+    function disableButton() {
+      const button =
+        (document.getElementById("next") as HTMLInputElement) || null;
+      if (selected) {
+        button.disabled = false;
+      } else {
+        button.disabled = true;
+      }
+    }
+    disableButton();
+  }, [selected]);
 
-  function setSelectedGenre({ value }: any) {
-    setSelected(value);
-    console.log("selected");
-  }
-  const ContollerButton = ({ value, styling }: any) => {
-    return (
-      <div>
-        <button
-          className="nav-button"
-          value={value}
-          onClick={() => console.log("selected")}
-        >
-          {value}
-        </button>
-      </div>
-    );
-  };
   return (
     <div className="nav-div">
-      <ContollerButton
-        value="Back"
-        styling="back-nav-button"
-        onClick={() => console.log("kk")}
-      />
-      <ContollerButton value="Next" styling="next-nav-button" />
+      <div>
+        <input
+          className="nav-button"
+          value="Back"
+          type="button"
+          id="prev"
+          onClick={() => console.log("clicked")}
+        />
+      </div>
+      <div>
+        <input
+          className="nav-button"
+          value="Next"
+          disabled={true}
+          type="button"
+          id="next"
+          onClick={() => console.log("clicked")}
+        />
+      </div>
     </div>
   );
 };

@@ -3,18 +3,32 @@ import { initialSubGenreProps } from "../utils/initialState";
 import Controller from "./Controller";
 
 const Genres = () => {
+  const [genre, setGenre] = useState("");
+  const [subGenre, setSubGenre] = useState("");
   const [selected, setSelected] = useState(false);
-  const [subGenre, setSubGenre] = useState(initialSubGenreProps);
+  const [addSubGenre, setAddSubGenre] = useState(initialSubGenreProps);
 
   function setSelectedGenre({ value }: any) {
-    setSelected(true);
+    if (genre !== value || subGenre !== value) {
+      setGenre(value);
+      setSubGenre(value);
+      console.log(value, "selected");
+      setSelected(true);
+    }
+    if (genre === value) {
+      setGenre("");
+      setSelected(false);
+      console.log(value, "deselected");
+    }
   }
+
   const Genre = ({ value }: any) => {
     return (
       <div className="genre-div">
         <button
-          className="genre-button"
+          className={genre !== value ? "genre-button" : "selected"}
           value={value}
+          id={value}
           onClick={() => setSelectedGenre({ value })}
         >
           {value}
@@ -25,46 +39,36 @@ const Genres = () => {
 
   const InputData = ({ label }: any, { type }: any) => {
     return (
-      // <div form-submit-book>
       <>
-        {/* <div form-submit-book> */}
         <label>{label}</label>
         <input placeholder={label} className="input-genre" />
-        {/* </div> */}
       </>
     );
   };
 
   return (
-    <>
+    <div>
       <div className="step current-step">
         <section>
           <Genre value="Genre 1" />
           <Genre value="Genre 2" />
           <Genre value="Genre 3" />
           <Genre value="Genre 4" />
-          <Genre value="Genre 4" />
-          <Genre value="Genre 4" />
-          <Genre value="Genre 4" />
-          <Genre value="Genre 4" />
-          <Genre value="Genre 4" />
         </section>
-        <Controller />
       </div>
 
-      <div className="step ">
+      <div className="step">
         <section>
           <Genre value="Subgenre 1" />
           <Genre value="Subgenre 2" />
           <Genre value="Subgenre 3" />
           <Genre value="Subgenre 4" />
-          <Genre value="Subgenre 4" />
-          <Genre value="Subgenre 4" />
-          <Genre value="Subgenre 4" />
-          <Genre value="Subgenre 4" />
+          <Genre value="Subgenre 5" />
+          <Genre value="Subgenre 6" />
+          <Genre value="Subgenre 7" />
+          <Genre value="Subgenre 8" />
           <Genre value="Add New" />
         </section>
-        <Controller />
       </div>
 
       <div className="step">
@@ -79,7 +83,6 @@ const Genres = () => {
             <span>Description is required for this subgenre</span>
           </div>
         </section>
-        <Controller />
       </div>
 
       <div className="step">
@@ -161,8 +164,8 @@ const Genres = () => {
             />
           </div>
         </section>
-        <Controller />
       </div>
+      <Controller selected={selected} />
 
       <div className="step">
         <section className="align-center">
@@ -181,7 +184,7 @@ const Genres = () => {
           </div>
         </section>
       </div>
-    </>
+    </div>
   );
 };
 

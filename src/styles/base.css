@@ -14,9 +14,10 @@ header {
 
 
 section {
+  gap: 8px;
   display: flex;
   flex-direction: row;
-  /* justify-content: center; */
+  justify-content: space-between;
   align-items: center;
   margin: auto;
   flex-wrap: wrap;
@@ -29,29 +30,45 @@ section {
   justify-content: center;
 }
 
-.genre-div {
-  flex: 0 1 calc(25%);
-  position: relative;
-}
-
-.genre-button {
-  background-color: #fff;
-  border: 1px solid black;
-  color: #000;
-  padding: 13px 50px;
+.selected {
+  background-color: #3d3b3b;
+  border: 1px solid #3d3b3b;
+  color: #fff;
+  width: 140px;
+  height: 40px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
-  font-size: 16px;
   border-radius: 4px;
-  margin-bottom: 10px;
-  margin-right: 10px;
+  margin: auto;
+  /* margin-right: 10px; */
+  cursor: pointer
+}
+
+.genre-div {
+  /* flex: 0 1 calc(25%); */
+  display: flex;
+  justify-content: space-between;
+}
+
+.genre-button {
+  gap: 8px;
+  background-color: #fff;
+  border: 1px solid black;
+  color: #000;
+  width: 140px;
+  height: 40px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  border-radius: 4px;
+  margin: auto;
 }
 
 .genre-button:hover {
-  background-color: #3d3b3b;
+  /* background-color: #3d3b3b; */
   cursor: pointer;
-  color: white;
+  /* color: white; */
   border: 1px solid #3d3b3b;
 }
 
@@ -66,19 +83,19 @@ section {
 .nav-button {
   background-color: #fff;
   border: 1px solid #000;
-  color: #000;
+  /* color: #000; */
   padding: 7px 40px;
   text-align: center;
   text-decoration: none;
   font-size: 14px;
   border-radius: 6px;
+  cursor: pointer;
 }
 
 .nav-button:hover {
   background-color: #3d3b3b;
-  cursor: pointer;
-  color: white;
-  border: 1px border #3d3b3b;
+  /* color: white; */
+  /* border: 1px border #3d3b3b; */
 }
 
 .input-genre {
