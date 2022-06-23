@@ -1,12 +1,37 @@
 header {
   margin-top: 15px;
+  margin-left: 15px;
+  ;
 }
+
+.step {
+  display: none;
+}
+
+.current-step {
+  display: block;
+}
+
 
 section {
   display: flex;
   flex-direction: row;
-  justify-content: space-evenly;
+  /* justify-content: center; */
   align-items: center;
+  margin: auto;
+  flex-wrap: wrap;
+  padding-top: 3rem;
+  padding-bottom: 2rem;
+  width: 97%;
+}
+
+.align-center {
+  justify-content: center;
+}
+
+.genre-div {
+  flex: 0 1 calc(25%);
+  position: relative;
 }
 
 .genre-button {
@@ -19,4 +44,227 @@ section {
   display: inline-block;
   font-size: 16px;
   border-radius: 4px;
+  margin-bottom: 10px;
+  margin-right: 10px;
+}
+
+.genre-button:hover {
+  background-color: #3d3b3b;
+  cursor: pointer;
+  color: white;
+  border: 1px solid #3d3b3b;
+}
+
+.nav-div {
+  display: flex;
+  margin-bottom: 20px;
+  justify-content: right;
+  margin-right: 20px;
+  gap: 10px
+}
+
+.nav-button {
+  background-color: #fff;
+  border: 1px solid #000;
+  color: #000;
+  padding: 7px 40px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 14px;
+  border-radius: 6px;
+}
+
+.nav-button:hover {
+  background-color: #3d3b3b;
+  cursor: pointer;
+  color: white;
+  border: 1px border #3d3b3b;
+}
+
+.input-genre {
+  width: 100%;
+  height: 20px;
+  border: 1px solid black;
+  border-radius: 6px;
+  padding: 10px;
+  margin-bottom: 1.5rem
+}
+
+.input-date {
+  width: 200px;
+  height: 20px;
+  border: 1px solid black;
+  border-radius: 6px;
+  padding: 10px;
+  margin-bottom: 1.5rem;
+}
+
+.input {
+  width: 100%;
+  position: relative;
+}
+
+.less-width {
+  display: grid;
+}
+
+.checkbox {
+  width: 40px;
+  height: 25px;
+  border-radius: 4px;
+  margin: -5px;
+}
+
+.subgenre-checkbox-div {
+  display: flex;
+  gap: 6px;
+  justify-content: left;
+  position: relative;
+  width: 100%;
+}
+
+.subgenre-checkbox-div span {
+  margin-bottom: 5px;
+}
+
+label {
+  text-align: left;
+  width: 237px;
+  margin-bottom: 5px;
+}
+
+.select {
+  width: 100%;
+  height: 40px;
+  border: 1px solid black;
+  border-radius: 6px;
+  padding: 10px;
+  margin-bottom: 1.5rem
+}
+
+select>option {
+  width: 97%;
+  height: 30px;
+}
+
+textarea {
+  width: 100%;
+}
+
+.edit {
+  display: flex;
+  width: 100%
+}
+
+.edit-input {
+  display: flex;
+  width: 100%;
+  gap: 15px;
+}
+
+.input-edit {
+  width: 200px;
+  height: 18px;
+  border: 1px solid black;
+  border-radius: 6px;
+  padding: 10px;
+  margin-bottom: 1.5rem
+}
+
+.edit-lang {
+  width: 200px;
+  height: 40px;
+  border: 1px solid black;
+  border-radius: 6px;
+  padding: 10px;
+  margin-bottom: 1.5rem
+}
+
+.input-pages {
+  width: 130px;
+  height: 18px;
+  border: 1px solid black;
+  border-radius: 6px;
+  padding: 10px;
+  margin-bottom: 1.5rem
+}
+
+.format {
+  width: 220px;
+  height: 37px;
+  border: 1px solid black;
+  border-radius: 6px;
+  padding: 10px;
+  margin-bottom: 1.5rem
+}
+
+.correct-symbol {
+  width: 100%;
+}
+
+.checkmark {
+  display: inline-block;
+  width: 22px;
+  height: 22px;
+  -ms-transform: rotate(45deg);
+  /* IE 9 */
+  -webkit-transform: rotate(45deg);
+  /* Chrome, Safari, Opera */
+  transform: rotate(45deg);
+}
+
+.checkmark_circle {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  background-color: green;
+  border-radius: 50px;
+  justify-content: center;
+  left: 110px;
+  bottom: 50px;
+}
+
+.checkmark_stem {
+  position: absolute;
+  width: 5px;
+  height: 50px;
+  background-color: #fff;
+  left: 160px;
+  bottom: 80px;
+}
+
+.checkmark_kick {
+  -ms-transform: rotate(-90deg);
+  /* IE 9 */
+  -webkit-transform: rotate(-90deg);
+  /* Chrome, Safari, Opera */
+  transform: rotate(-90deg);
+  position: absolute;
+  width: 5px;
+  height: 20px;
+  background-color: #fff;
+  left: 150px;
+  bottom: 72.5px;
+}
+
+section p {
+  margin-top: 7rem;
+  text-align: center;
+}
+
+.add-another-book {
+  width: 350px;
+  height: 40px;
+  border-radius: 6px;
+  border: 1px solid #3d3b3b;
+  margin-top: 2rem;
+  background-color: #3d3b3b;
+  color: white;
+}
+
+.add-another-book:hover {
+  border: 1px solid #000;
+  background-color: #000;
+  color: white;
+  cursor: pointer;
 }
