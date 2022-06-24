@@ -1,9 +1,11 @@
-import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit';
-// import counterReducer from '../redux/counter/counterSlice';
+import { configureStore, ThunkAction, Action } from "@reduxjs/toolkit";
+import setCurrentStepSlice from "../redux/setCurrentStepSlice";
+import setGenre from "../redux/setGenreSlice";
 
 export const store = configureStore({
   reducer: {
-    // counter: counterReducer,
+    Genres: setGenre,
+    CurrentStep: setCurrentStepSlice,
   },
 });
 

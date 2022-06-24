@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 
-const Controller = ({ selected }: any) => {
+const Controller = ({ selected, steps }: any) => {
   useEffect(() => {
+    const button =
+      (document.getElementById("next") as HTMLInputElement) || null;
     function disableButton() {
-      const button =
-        (document.getElementById("next") as HTMLInputElement) || null;
       if (selected) {
         button.disabled = false;
       } else {
@@ -13,7 +13,6 @@ const Controller = ({ selected }: any) => {
     }
     disableButton();
   }, [selected]);
-
   return (
     <div className="nav-div">
       <div>
@@ -29,10 +28,9 @@ const Controller = ({ selected }: any) => {
         <input
           className="nav-button"
           value="Next"
-          disabled={true}
           type="button"
           id="next"
-          onClick={() => console.log("clicked")}
+          onClick={() => console.log("all")}
         />
       </div>
     </div>
