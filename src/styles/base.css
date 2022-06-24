@@ -6,6 +6,20 @@ header {
 
 .step {
   display: none;
+  animation: animate .5s;
+  transform-origin: right
+}
+
+@keyframes animate {
+  from {
+    transform: scale(1, 0);
+    opacity: 0;
+  }
+
+  to {
+    transform: scale(1, 1);
+    opacity: 1;
+  }
 }
 
 .current-step {
