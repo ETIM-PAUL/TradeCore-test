@@ -10,7 +10,6 @@
 }
 
 .progress-steps {
-  /* margin-left: -30px; */
   position: relative;
   counter-reset: step;
   margin-top: 2rem;
@@ -67,6 +66,14 @@
   border-radius: 50%;
   display: flex;
   justify-content: center;
+}
+
+.progress-step span {
+  display: flex;
+  position: absolute;
+  bottom: -70%;
+  font-size: 14px;
+  color: black;
 }
 
 .progress-number {

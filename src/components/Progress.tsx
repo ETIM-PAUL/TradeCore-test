@@ -1,21 +1,34 @@
-import React from "react";
 import { useAppSelector } from "../app/hooks";
 import "../styles/base.css";
 import "../styles/progress.css";
 const Progress = () => {
   const selector = useAppSelector;
   const currentStep = selector((state: any) => state.CurrentStep.step);
+  const prevStep = selector((state: any) => state.CurrentStep.prevStep);
+
+  const ProgressStep = ({ stepStatus, title }: any) => {
+    return (
+      <div
+        className={
+          currentStep === stepStatus
+            ? "progress-step progress-step-current"
+            : "progress-step"
+        }
+      >
+        <span>{title}</span>
+      </div>
+    );
+  };
   return (
     <div className="progress-section">
       <header>Add Book - New book</header>
 
       <div className="progress-steps">
-        <div
-          className="progress-step progress-step-current"
-          data-title="Genre"
-        ></div>
+        <ProgressStep stepStatus="selectingGenre" title="Genre" />
+
         <div className="line"></div>
-        <div className="progress-step" data-title="Subgenre"></div>
+        <ProgressStep stepStatus="selectingSubGenre" title="Subgenre" />
+
         {(currentStep === "selectingSubGenre" ||
           currentStep === "selectingGenre" ||
           currentStep === "finished") && (
@@ -26,10 +39,16 @@ const Progress = () => {
             </div>
           </>
         )}
-        {currentStep === "addNewSubGenre" && (
+
+        {(currentStep === "addNewSubGenre" ||
+          (prevStep === "addNewSubGenre" &&
+            currentStep === "addInformation")) && (
           <>
             <div className="line"></div>
-            <div className="progress-step" data-title="Add new subgenre"></div>
+            <ProgressStep
+              stepStatus="addNewSubGenre"
+              title="Add new subgenre"
+            />
           </>
         )}
 
@@ -37,7 +56,7 @@ const Progress = () => {
           currentStep === "addNewSubGenre") && (
           <>
             <div className="line"></div>
-            <div className="progress-step" data-title="Information"></div>
+            <ProgressStep stepStatus="addInformation" title="Information" />
           </>
         )}
       </div>

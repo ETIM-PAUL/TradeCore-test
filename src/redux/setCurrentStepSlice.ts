@@ -1,9 +1,12 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  step: localStorage.getItem("currentStep")
-    ? JSON.parse(localStorage.getItem("currentStep")!)
+  step: localStorage.getItem("state")
+    ? JSON.parse(localStorage.getItem("state")!)
     : "selectingGenre",
+  prevStep: localStorage.getItem("prevState")
+    ? JSON.parse(localStorage.getItem("prevState")!)
+    : "",
 };
 
 const stepSlice = createSlice({
@@ -14,9 +17,14 @@ const stepSlice = createSlice({
       state.step = payload;
       localStorage.setItem("state", JSON.stringify(state.step));
     },
+
+    setPreviousStep: (state, { payload }) => {
+      state.prevStep = payload;
+      localStorage.setItem("prevState", JSON.stringify(state.prevStep));
+    },
   },
 });
 
-export const { setCurrentStep } = stepSlice.actions;
+export const { setCurrentStep, setPreviousStep } = stepSlice.actions;
 
 export default stepSlice.reducer;

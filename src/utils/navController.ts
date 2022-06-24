@@ -38,12 +38,15 @@ export function prevSlide(step: number) {
   firstStep();
 }
 
-export function skipSlide(step: number) {
-  const subGenre = document.getElementById("subGenre") as HTMLDivElement;
+export function skipSlide(step: number, stepName: string) {
   const steps = document.querySelectorAll(".step");
   function firstStep() {
-    subGenre.classList.add("current-step");
-    steps[step].classList.remove("current-step");
+    steps[step - 1].classList.add("current-step");
+    if (stepName === "addNewSubGenre") {
+      steps[step].classList.remove("current-step");
+    } else {
+      steps[step + 1].classList.remove("current-step");
+    }
   }
   firstStep();
 }
