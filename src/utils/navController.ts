@@ -9,7 +9,7 @@ export function moveSlides(stepPosition: number, setSelected: any) {
 }
 
 export function firstSlide(initialStep: number) {
-  const lastStep = document.getElementById("last-step") as HTMLDivElement;
+  const lastStep = document.getElementById("finished") as HTMLDivElement;
   const steps = document.querySelectorAll(".step");
   function firstStep() {
     lastStep.classList.remove("current-step");

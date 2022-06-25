@@ -12,8 +12,11 @@ const Success = ({
   setRequiredT,
 }: any) => {
   const dispatch = useAppDispatch();
+  const resetEntryData = () => {
+    localStorage.removeItem("currentData");
+  };
   return (
-    <div className="step" id="last-step">
+    <div className="step" id="finished">
       <section className="align-center">
         <div>
           <div className="correct-symbol">
@@ -38,6 +41,7 @@ const Success = ({
                 setDes("");
                 setCheckedDesc(false);
                 setRequiredT(true);
+                resetEntryData();
               }}
             >
               Add another Book

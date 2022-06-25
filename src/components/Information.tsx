@@ -67,7 +67,7 @@ const Information = ({
     } else if (requiredT === false) {
       moveSlides(4, setSelected);
       dispatch(setCurrentInfo({ BookInfo: bookDetails }));
-      saveBookInfo(currentInfo);
+      saveBookInfo(JSON.parse(currentInfo));
       dispatch(setCurrentStep("finished"));
       setBookDes("");
       setBookTitle("");
