@@ -8,6 +8,9 @@ const initialState = {
   subGenre: localStorage.getItem("subGenres")
     ? JSON.parse(localStorage.getItem("subGenres")!)
     : [],
+  currentData: localStorage.getItem("currentData")
+    ? JSON.parse(localStorage.getItem("currentData")!)
+    : {},
 };
 
 const genreSlice = createSlice({
@@ -32,6 +35,16 @@ const genreSlice = createSlice({
       localStorage.setItem("subGenres", JSON.stringify(subG));
     },
 
+    setCurrentInfo: (state, { payload }) => {
+      let curData = localStorage.getItem("currentData")
+        ? JSON.parse(localStorage.getItem("currentData")!)
+        : {};
+      let data = Object.assign({}, payload);
+      let newState = { ...curData, ...data };
+      localStorage.setItem("currentData", JSON.stringify(newState));
+      state.currentData = JSON.stringify(newState);
+    },
+
     removeSubGenres: (state) => {
       state.subGenre = [];
       const prevState = { subGenre: [] };
@@ -40,7 +53,7 @@ const genreSlice = createSlice({
   },
 });
 
-export const { setGenreValues, getSubGenres, removeSubGenres } =
+export const { setGenreValues, getSubGenres, removeSubGenres, setCurrentInfo } =
   genreSlice.actions;
 
 export default genreSlice.reducer;

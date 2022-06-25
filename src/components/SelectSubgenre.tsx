@@ -1,7 +1,7 @@
 import React from "react";
 import { useAppDispatch, useAppSelector } from "../app/hooks";
 import { setCurrentStep } from "../redux/setCurrentStepSlice";
-import { removeSubGenres } from "../redux/setGenreSlice";
+import { removeSubGenres, setCurrentInfo } from "../redux/setGenreSlice";
 import { jumpSlide, moveSlides, prevSlide } from "../utils/navController";
 import Progress from "./Progress";
 
@@ -41,7 +41,7 @@ const SelectSubgenre = ({
               id={g.name}
               onClick={() => {
                 setSelectedSubGenre(g.name, g.isDescriptionRequired);
-                // dispatch(setCurrentInfo(g.name));
+                dispatch(setCurrentInfo({ Subgenre: g.name }));
               }}
             >
               {g.name}

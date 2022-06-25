@@ -3,6 +3,7 @@ import { useSelector } from "react-redux";
 import { toast } from "react-toastify";
 import { useAppDispatch } from "../app/hooks";
 import { setCurrentStep, setPreviousStep } from "../redux/setCurrentStepSlice";
+import { setCurrentInfo } from "../redux/setGenreSlice";
 import { moveSlides, skipSlide } from "../utils/navController";
 import { saveBookInfo } from "../utils/operations";
 import Progress from "./Progress";
@@ -25,6 +26,7 @@ const Information = ({
   const dispatch = useAppDispatch();
   const selector = useSelector;
   const step = selector((state: any) => state.CurrentStep.prevStep);
+  const currentInfo = selector((state: any) => state.Genres.currentData);
   const [author, setAuthor] = useState("");
   const [isbn, setIsbn] = useState("");
   const [date, setDate] = useState(new Date().toISOString().slice(0, 10));
@@ -44,8 +46,6 @@ const Information = ({
   }
   async function valiDateEntries() {
     let bookDetails = {
-      genre,
-      subgenre,
       booktitle,
       bookDes,
       author,
@@ -66,7 +66,8 @@ const Information = ({
       }
     } else if (requiredT === false) {
       moveSlides(4, setSelected);
-      saveBookInfo(bookDetails);
+      dispatch(setCurrentInfo({ BookInfo: bookDetails }));
+      saveBookInfo(currentInfo);
       dispatch(setCurrentStep("finished"));
       setBookDes("");
       setBookTitle("");

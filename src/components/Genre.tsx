@@ -4,7 +4,7 @@ import { setCurrentStep } from "../redux/setCurrentStepSlice";
 import {
   getSubGenres,
   removeSubGenres,
-  // setCurrentInfo,
+  setCurrentInfo,
   setGenreValues,
 } from "../redux/setGenreSlice";
 import { moveSlides } from "../utils/navController";
@@ -63,7 +63,6 @@ const Genres = () => {
     disableButton();
     persistCurrentSlide();
     dispatch(setGenreValues());
-    persistCurrentSlide();
   }, [currentStep, dispatch, selected]);
 
   return (
@@ -80,7 +79,7 @@ const Genres = () => {
                 id={g.name}
                 onClick={() => {
                   setSelectedGenre(g.name, g.id);
-                  // dispatch(setCurrentInfo(g.name));
+                  dispatch(setCurrentInfo({ Genre: g.name }));
                 }}
               >
                 {g.name}

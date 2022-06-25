@@ -1,6 +1,7 @@
 import React from "react";
 import { useAppDispatch } from "../app/hooks";
 import { setCurrentStep, setPreviousStep } from "../redux/setCurrentStepSlice";
+import { setCurrentInfo } from "../redux/setGenreSlice";
 import { moveSlides, prevSlide } from "../utils/navController";
 import { checked, desc, saveSubgenre } from "../utils/operations";
 import Progress from "./Progress";
@@ -75,6 +76,7 @@ const AddNewSubGenre = ({
             onClick={(e: any) => {
               moveSlides(3, setSelected);
               dispatch(setCurrentStep("addInformation"));
+              dispatch(setCurrentInfo({ Subgenre: des }));
               dispatch(setPreviousStep("addNewSubGenre"));
               saveSubgenre(des, checkedDes);
             }}
