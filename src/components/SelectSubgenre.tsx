@@ -34,21 +34,22 @@ const SelectSubgenre = ({
     <div className="step" id="selectingSubGenre">
       <Progress />
       <section>
-        {subGenres?.map((g: any) => (
-          <div className="genre-div" key={g.name}>
-            <button
-              className={subgenre !== g.name ? "genre-button" : "selected"}
-              value={g.name}
-              id={g.name}
-              onClick={() => {
-                setSelectedSubGenre(g.name, g.isDescriptionRequired);
-                dispatch(setCurrentInfo({ Subgenre: g.name }));
-              }}
-            >
-              {g.name}
-            </button>
-          </div>
-        ))}
+        {subGenres.length > 0 &&
+          subGenres.map((g: any) => (
+            <div className="genre-div" key={g.name}>
+              <button
+                className={subgenre !== g.name ? "genre-button" : "selected"}
+                value={g.name}
+                id={g.name}
+                onClick={() => {
+                  setSelectedSubGenre(g.name, g.isDescriptionRequired);
+                  dispatch(setCurrentInfo({ Subgenre: g.name }));
+                }}
+              >
+                {g.name}
+              </button>
+            </div>
+          ))}
         <div className="genre-div">
           <button
             className="genre-button"

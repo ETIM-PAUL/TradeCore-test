@@ -16,7 +16,7 @@ import Success from "./Success";
 
 const Genres = () => {
   const [genre, setGenre] = useState("");
-  const [subgenre, setSubgenre] = useState("");
+  const [subgenre, setSubgenre] = useState([]);
   const [des, setDes] = useState<string>("");
   const [booktitle, setBookTitle] = useState("");
   const [bookDes, setBookDes] = useState("");
