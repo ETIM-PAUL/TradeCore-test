@@ -131,9 +131,11 @@ const Genres = () => {
         setBookDes={setBookDes}
         setRequiredT={setRequiredT}
         setBookTitle={setBookTitle}
+        c
         setCheckedDesc={setCheckedDesc}
         setDes={setDes}
         setSubgenre={setSubgenre}
+        setRequiredDes={setRequiredDesc}
       />
 
       <Success

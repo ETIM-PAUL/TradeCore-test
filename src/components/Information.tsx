@@ -23,6 +23,7 @@ const Information = ({
   setCheckedDesc,
   setDes,
   setSubgenre,
+  setRequiredDes,
 }: any) => {
   const dispatch = useAppDispatch();
   const selector = useSelector;
@@ -45,7 +46,7 @@ const Information = ({
       dispatch(setCurrentStep("selectingSubGenre"));
     }
   }
-  async function valiDateEntries() {
+  function valiDateEntries() {
     let bookDetails = {
       booktitle,
       bookDes,
@@ -65,21 +66,24 @@ const Information = ({
       } else {
         setRequiredT(false);
       }
-    } else if (requiredT === false) {
-      moveSlides(4, setSelected);
+    } else {
+      if (requiredT === false) {
+        saveBookInfo(JSON.parse(currentInfo));
+        setBookDes("");
+        setBookTitle("");
+        setRequiredT(true);
+        setAuthor("");
+        setIsbn("");
+        setEdition("");
+        setLanguage("");
+        setPages(0);
+        setFormat("");
+        setDate(new Date().toISOString().slice(0, 10));
+        setRequiredDes(false);
+      }
       dispatch(setCurrentInfo({ BookInfo: bookDetails }));
-      saveBookInfo(JSON.parse(currentInfo));
+      moveSlides(4, setSelected);
       dispatch(setCurrentStep("finished"));
-      setBookDes("");
-      setBookTitle("");
-      setRequiredT(true);
-      setAuthor("");
-      setIsbn("");
-      setEdition("");
-      setLanguage("");
-      setPages(0);
-      setFormat("");
-      setDate(new Date().toISOString().slice(0, 10));
     }
   }
   return (
@@ -227,7 +231,7 @@ const Information = ({
             value="Add"
             id="add"
             type="button"
-            onClick={() => valiDateEntries()}
+            onClick={valiDateEntries}
           />
         </div>
       </div>
