@@ -4,6 +4,7 @@ import { setCurrentStep } from "../redux/setCurrentStepSlice";
 import {
   getSubGenres,
   removeSubGenres,
+  // setCurrentInfo,
   setGenreValues,
 } from "../redux/setGenreSlice";
 import { moveSlides } from "../utils/navController";
@@ -27,6 +28,7 @@ const Genres = () => {
   const selector = useAppSelector;
 
   const genres = selector((state: any) => state.Genres.genre.genres);
+  const currentStep = selector((state: any) => state.CurrentStep.step);
 
   function setSelectedGenre(value: any, id: number) {
     if (genre !== value) {
@@ -40,7 +42,14 @@ const Genres = () => {
       dispatch(removeSubGenres());
     }
   }
+
   useEffect(() => {
+    function persistCurrentSlide() {
+      const slides = document.querySelector(".step");
+      slides?.classList.remove("current-step");
+      const currentSlide = document.getElementById(currentStep);
+      currentSlide?.classList.add("current-step");
+    }
     const button = document.querySelectorAll(".next");
     function disableButton() {
       button.forEach((btn: any) => {
@@ -52,12 +61,14 @@ const Genres = () => {
       });
     }
     disableButton();
+    persistCurrentSlide();
     dispatch(setGenreValues());
-  }, [dispatch, selected]);
+    persistCurrentSlide();
+  }, [currentStep, dispatch, selected]);
 
   return (
     <div>
-      <div className="step current-step" id="genre">
+      <div className="step current-step" id="selectingGenre">
         <Progress />
 
         <section>
@@ -67,7 +78,10 @@ const Genres = () => {
                 className={genre !== g.name ? "genre-button" : "selected"}
                 value={g.name}
                 id={g.name}
-                onClick={() => setSelectedGenre(g.name, g.id)}
+                onClick={() => {
+                  setSelectedGenre(g.name, g.id);
+                  // dispatch(setCurrentInfo(g.name));
+                }}
               >
                 {g.name}
               </button>

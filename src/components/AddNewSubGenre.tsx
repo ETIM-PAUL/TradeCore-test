@@ -27,7 +27,7 @@ const AddNewSubGenre = ({
   const dispatch = useAppDispatch();
 
   return (
-    <div className="step" id="newSubgenre">
+    <div className="step" id="addNewSubGenre">
       <Progress />
       <section>
         <input

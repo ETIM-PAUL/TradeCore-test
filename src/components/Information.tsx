@@ -81,7 +81,7 @@ const Information = ({
     }
   }
   return (
-    <div className="step form-information">
+    <div className="step form-information" id="addInformation">
       <Progress />
       <div className="section-form">
         <label>Book title</label>

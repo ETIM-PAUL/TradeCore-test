@@ -19,7 +19,9 @@ export function firstSlide(initialStep: number) {
 }
 
 export function jumpSlide(step: number, setSelected: any) {
-  const subGenre = document.getElementById("subGenre") as HTMLDivElement;
+  const subGenre = document.getElementById(
+    "selectingSubGenre"
+  ) as HTMLDivElement;
   const steps = document.querySelectorAll(".step");
   function firstStep() {
     subGenre.classList.remove("current-step");

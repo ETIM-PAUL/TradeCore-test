@@ -30,7 +30,7 @@ const SelectSubgenre = ({
   }
   const subGenres = selector((state: any) => state.Genres.subGenre);
   return (
-    <div className="step" id="subGenre">
+    <div className="step" id="selectingSubGenre">
       <Progress />
       <section>
         {subGenres.map((g: any) => (
@@ -39,9 +39,10 @@ const SelectSubgenre = ({
               className={subgenre !== g.name ? "genre-button" : "selected"}
               value={g.name}
               id={g.name}
-              onClick={() =>
-                setSelectedSubGenre(g.name, g.isDescriptionRequired)
-              }
+              onClick={() => {
+                setSelectedSubGenre(g.name, g.isDescriptionRequired);
+                // dispatch(setCurrentInfo(g.name));
+              }}
             >
               {g.name}
             </button>
