@@ -57,33 +57,27 @@ const Information = ({
       format,
       language,
     };
-    if (requiredT === true) {
-      if (!booktitle) {
-        toast("Book Title is required");
-      }
-      if (requiredDes === true && !bookDes) {
-        toast("Book Description is required");
-      } else {
-        setRequiredT(false);
-      }
+    if (requiredT === true && !booktitle) {
+      toast("Book Title is required");
+    } else if (requiredT === true && requiredDes === true && !bookDes) {
+      toast("Book Description is required");
     } else {
-      if (requiredT === false) {
-        saveBookInfo(JSON.parse(currentInfo));
-        setBookDes("");
-        setBookTitle("");
-        setRequiredT(true);
-        setAuthor("");
-        setIsbn("");
-        setEdition("");
-        setLanguage("");
-        setPages(0);
-        setFormat("");
-        setDate(new Date().toISOString().slice(0, 10));
-        setRequiredDes(false);
-      }
+      setRequiredT(false);
       dispatch(setCurrentInfo({ BookInfo: bookDetails }));
       moveSlides(4, setSelected);
       dispatch(setCurrentStep("finished"));
+      saveBookInfo(JSON.parse(currentInfo));
+      setBookDes("");
+      setBookTitle("");
+      setRequiredT(true);
+      setAuthor("");
+      setIsbn("");
+      setEdition("");
+      setLanguage("");
+      setPages(0);
+      setFormat("");
+      setDate(new Date().toISOString().slice(0, 10));
+      setRequiredDes(false);
     }
   }
   return (
