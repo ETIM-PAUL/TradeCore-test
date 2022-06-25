@@ -3,6 +3,7 @@ import { useSelector } from "react-redux";
 import { useAppDispatch } from "../app/hooks";
 import { setCurrentStep, setPreviousStep } from "../redux/setCurrentStepSlice";
 import { moveSlides, skipSlide } from "../utils/navController";
+import { saveBookInfo } from "../utils/operations";
 import Progress from "./Progress";
 
 const Information = ({
@@ -64,6 +65,7 @@ const Information = ({
       }
     } else if (requiredT === false) {
       moveSlides(4, setSelected);
+      saveBookInfo(bookDetails);
       dispatch(setCurrentStep("finished"));
       setBookDes("");
       setBookTitle("");
@@ -75,7 +77,6 @@ const Information = ({
       setPages(0);
       setFormat("");
       setDate(new Date());
-      console.log(JSON.stringify(bookDetails));
     }
   }
   return (

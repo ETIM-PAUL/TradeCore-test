@@ -29,5 +29,50 @@ export async function checked(
 }
 
 export function saveSubgenre(subgenre: any, requiredDesc: any) {
-  console.log({ name: "subgenre", isDescription: requiredDesc });
+  let body = { name: subgenre, isDescription: requiredDesc };
+  function post(url: any, body: any) {
+    const requestOptions = {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(body),
+    };
+    return fetch(url, requestOptions).then(handleResponse);
+  }
+
+  function handleResponse(response: any) {
+    return response.text().then((text: any) => {
+      const data = text && JSON.parse(text);
+      if (!response.ok) {
+        const error = (data && data.message) || response.statusText;
+        console.log("Data not submitted");
+        return Promise.reject(error);
+      }
+      console.log(data);
+    });
+  }
+  post("https://jsonplaceholder.typicode.com/posts", body);
+}
+
+export function saveBookInfo(bookInfo: any) {
+  function post(url: any, body: any) {
+    const requestOptions = {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(body),
+    };
+    return fetch(url, requestOptions).then(handleResponse);
+  }
+
+  function handleResponse(response: any) {
+    return response.text().then((text: any) => {
+      const data = text && JSON.parse(text);
+      if (!response.ok) {
+        const error = (data && data.message) || response.statusText;
+        console.log("Data not submitted");
+        return Promise.reject(error);
+      }
+      console.log(data);
+    });
+  }
+  post("https://jsonplaceholder.typicode.com/posts", bookInfo);
 }
