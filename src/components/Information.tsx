@@ -27,7 +27,7 @@ const Information = ({
   const step = selector((state: any) => state.CurrentStep.prevStep);
   const [author, setAuthor] = useState("");
   const [isbn, setIsbn] = useState("");
-  const [date, setDate] = useState(new Date());
+  const [date, setDate] = useState(new Date().toISOString().slice(0, 10));
   const [pages, setPages] = useState(0);
   const [format, setFormat] = useState("");
   const [edition, setEdition] = useState("");
@@ -42,7 +42,7 @@ const Information = ({
       dispatch(setCurrentStep("selectingSubGenre"));
     }
   }
-  function valiDateEntries() {
+  async function valiDateEntries() {
     let bookDetails = {
       genre,
       subgenre,
@@ -77,7 +77,7 @@ const Information = ({
       setLanguage("");
       setPages(0);
       setFormat("");
-      setDate(new Date());
+      setDate(new Date().toISOString().slice(0, 10));
     }
   }
   return (
@@ -134,8 +134,10 @@ const Information = ({
           <input
             type="date"
             className="input-date"
-            value={date.getDate()}
-            onChange={(e) => setDate(new Date(e.target.value))}
+            value={date}
+            onChange={(e) =>
+              setDate(new Date(e.target.value).toISOString().slice(0, 10))
+            }
           />
         </div>
 
