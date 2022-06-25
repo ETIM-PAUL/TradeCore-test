@@ -6,6 +6,7 @@ import { setCurrentStep, setPreviousStep } from "../redux/setCurrentStepSlice";
 import { setCurrentInfo } from "../redux/setGenreSlice";
 import { moveSlides, skipSlide } from "../utils/navController";
 import { saveBookInfo } from "../utils/operations";
+import icon from "../icon/less.png";
 import Progress from "./Progress";
 
 const Information = ({
@@ -205,9 +206,10 @@ const Information = ({
         </div>
       </div>
       <div className="nav-div">
-        <div>
+        <div className="back-button">
+          <img src={icon} className="prev-icon" alt="icon" />
           <input
-            className="nav-button back"
+            className="back"
             value="Back"
             type="button"
             onClick={() => {

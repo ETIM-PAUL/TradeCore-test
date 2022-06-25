@@ -4,6 +4,7 @@ import { setCurrentStep, setPreviousStep } from "../redux/setCurrentStepSlice";
 import { setCurrentInfo } from "../redux/setGenreSlice";
 import { moveSlides, prevSlide } from "../utils/navController";
 import { checked, desc, saveSubgenre } from "../utils/operations";
+import icon from "../icon/less.png";
 import Progress from "./Progress";
 
 interface AddNewSubGenreProps {
@@ -53,9 +54,10 @@ const AddNewSubGenre = ({
         </div>
       </section>
       <div className="nav-div">
-        <div>
+        <div className="back-button">
+          <img src={icon} className="prev-icon" alt="icon" />
           <input
-            className="nav-button"
+            className="back"
             value="Back"
             type="button"
             id="back"

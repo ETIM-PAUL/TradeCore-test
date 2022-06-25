@@ -3,6 +3,7 @@ import { useAppDispatch, useAppSelector } from "../app/hooks";
 import { setCurrentStep } from "../redux/setCurrentStepSlice";
 import { removeSubGenres, setCurrentInfo } from "../redux/setGenreSlice";
 import { jumpSlide, moveSlides, prevSlide } from "../utils/navController";
+import icon from "../icon/less.png";
 import Progress from "./Progress";
 
 const SelectSubgenre = ({
@@ -33,7 +34,7 @@ const SelectSubgenre = ({
     <div className="step" id="selectingSubGenre">
       <Progress />
       <section>
-        {subGenres.map((g: any) => (
+        {subGenres?.map((g: any) => (
           <div className="genre-div" key={g.name}>
             <button
               className={subgenre !== g.name ? "genre-button" : "selected"}
@@ -61,9 +62,10 @@ const SelectSubgenre = ({
         </div>
       </section>
       <div className="nav-div">
-        <div>
+        <div className="back-button">
+          <img src={icon} className="prev-icon" alt="icon" />
           <input
-            className="nav-button back"
+            className="back"
             value="Back"
             type="button"
             onClick={() => {
