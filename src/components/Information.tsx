@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
+import { toast } from "react-toastify";
 import { useAppDispatch } from "../app/hooks";
 import { setCurrentStep, setPreviousStep } from "../redux/setCurrentStepSlice";
 import { moveSlides, skipSlide } from "../utils/navController";
@@ -56,10 +57,10 @@ const Information = ({
     };
     if (requiredT === true) {
       if (!booktitle) {
-        alert("Please fill a book title");
+        toast("Book Title is required");
       }
       if (requiredDes === true && !bookDes) {
-        alert("please fill a description");
+        toast("Book Description is required");
       } else {
         setRequiredT(false);
       }
