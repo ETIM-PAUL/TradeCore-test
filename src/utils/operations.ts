@@ -29,13 +29,14 @@ export async function checked(
 }
 
 export function saveSubgenre(subgenre: any, requiredDesc: any) {
-  let body = { name: subgenre, isDescription: requiredDesc };
+  let body = { name: subgenre, isDescriptionRequired: requiredDesc };
   function post(url: any, body: any) {
     const requestOptions = {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(body),
     };
+    console.log(requestOptions);
     return fetch(url, requestOptions).then(handleResponse);
   }
 
@@ -47,10 +48,9 @@ export function saveSubgenre(subgenre: any, requiredDesc: any) {
         console.log("Data not submitted");
         return Promise.reject(error);
       }
-      console.log(data);
     });
   }
-  post("https://jsonplaceholder.typicode.com/posts", body);
+  post("https://reqres.in/api/subgenre", body);
 }
 
 export function saveBookInfo(bookInfo: any) {
@@ -60,6 +60,7 @@ export function saveBookInfo(bookInfo: any) {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(body),
     };
+    console.log(requestOptions);
     return fetch(url, requestOptions).then(handleResponse);
   }
 
@@ -71,8 +72,7 @@ export function saveBookInfo(bookInfo: any) {
         console.log("Data not submitted");
         return Promise.reject(error);
       }
-      console.log(data);
     });
   }
-  post("https://jsonplaceholder.typicode.com/posts", bookInfo);
+  post("https://reqres.in/api/bookInfo", bookInfo);
 }
