@@ -7,4 +7,4 @@ The project was built using react, redux (state management) and a library, react
 to notify the librarian of certain criteria that has to be met when filling the book
 information.
 
-Here is a link to the live application => https://62b75fa81763122d7598e62b--elaborate-liger-c6b2bf.netlify.app/
+Here is a link to the live application => https://62b77e1b870aaf000872a308--elaborate-liger-c6b2bf.netlify.app/
