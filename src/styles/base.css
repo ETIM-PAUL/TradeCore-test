@@ -28,16 +28,35 @@ header {
 
 
 section {
-  gap: 8px;
+  gap: 4px;
   display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
+  justify-content: flex-start;
+  align-items: flex-start;
   margin: auto;
   flex-wrap: wrap;
   padding-top: 3rem;
   padding-bottom: 2rem;
   width: 97%;
+
+}
+
+@media screen and (max-width:1200px) {
+  section {
+    gap: 4px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    margin: auto;
+    flex-wrap: wrap;
+    padding-top: 3rem;
+    padding-bottom: 2rem;
+    width: 97%;
+  }
+}
+
+.section::after {
+  content: "";
+  flex: auto;
 }
 
 .align-center {
@@ -60,9 +79,8 @@ section {
 }
 
 .genre-div {
-  /* flex: 0 1 calc(25%); */
   display: flex;
-  justify-content: space-between;
+  position: relative;
 }
 
 .genre-button {

@@ -4,6 +4,7 @@ export function desc(
   setSubgenre: React.Dispatch<React.SetStateAction<string>>,
   setSelected: React.Dispatch<React.SetStateAction<boolean>>
 ) {
+  console.log(d);
   if (d === "") {
     setDes("");
     setSelected(false);
