@@ -2,7 +2,7 @@ import React from "react";
 import { useAppDispatch } from "../app/hooks";
 import { setCurrentStep, setPreviousStep } from "../redux/setCurrentStepSlice";
 import { moveSlides, prevSlide } from "../utils/navController";
-import { checked, desc } from "../utils/operations";
+import { checked, desc, saveSubgenre } from "../utils/operations";
 import Progress from "./Progress";
 
 interface AddNewSubGenreProps {
@@ -24,7 +24,6 @@ const AddNewSubGenre = ({
   setRequiredDesc,
   setCheckedDesc,
 }: AddNewSubGenreProps) => {
-  console.log(des);
   const dispatch = useAppDispatch();
 
   return (
@@ -77,6 +76,7 @@ const AddNewSubGenre = ({
               moveSlides(3, setSelected);
               dispatch(setCurrentStep("addInformation"));
               dispatch(setPreviousStep("addNewSubGenre"));
+              saveSubgenre(des, checkedDes);
             }}
           />
         </div>

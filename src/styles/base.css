@@ -36,8 +36,19 @@ section {
   flex-wrap: wrap;
   padding-top: 3rem;
   padding-bottom: 2rem;
-  width: 97%;
+  width: 95%;
+}
 
+.section-form {
+  gap: 4px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  margin: auto;
+  flex-wrap: wrap;
+  padding-top: 3rem;
+  padding-bottom: 2rem;
+  width: 95%;
 }
 
 @media screen and (max-width:1200px) {
@@ -74,7 +85,6 @@ section {
   display: inline-block;
   border-radius: 4px;
   margin: auto;
-  /* margin-right: 10px; */
   cursor: pointer
 }
 
@@ -98,9 +108,7 @@ section {
 }
 
 .genre-button:hover {
-  /* background-color: #3d3b3b; */
   cursor: pointer;
-  /* color: white; */
   border: 1px solid #3d3b3b;
 }
 
@@ -151,6 +159,10 @@ section {
 .input {
   width: 100%;
   position: relative;
+}
+
+option span {
+  color: green;
 }
 
 .less-width {

@@ -4,7 +4,6 @@ export function desc(
   setSubgenre: React.Dispatch<React.SetStateAction<string>>,
   setSelected: React.Dispatch<React.SetStateAction<boolean>>
 ) {
-  console.log(d);
   if (d === "") {
     setDes("");
     setSelected(false);
@@ -27,4 +26,8 @@ export async function checked(
     setRequiredDesc(true);
     setCheckedDesc(true);
   }
+}
+
+export function saveSubgenre(subgenre: any, requiredDesc: any) {
+  console.log({ name: "subgenre", isDescription: requiredDesc });
 }

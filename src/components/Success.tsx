@@ -4,7 +4,13 @@ import { setCurrentStep, setPreviousStep } from "../redux/setCurrentStepSlice";
 import { removeSubGenres } from "../redux/setGenreSlice";
 import { firstSlide } from "../utils/navController";
 
-const Success = ({ setGenre, setSubgenre, setDes }: any) => {
+const Success = ({
+  setGenre,
+  setSubgenre,
+  setDes,
+  setCheckedDesc,
+  setRequiredT,
+}: any) => {
   const dispatch = useAppDispatch();
   return (
     <div className="step" id="last-step">
@@ -30,6 +36,8 @@ const Success = ({ setGenre, setSubgenre, setDes }: any) => {
                 setGenre("");
                 setSubgenre("");
                 setDes("");
+                setCheckedDesc(false);
+                setRequiredT(true);
               }}
             >
               Add another Book

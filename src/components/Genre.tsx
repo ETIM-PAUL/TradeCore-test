@@ -123,7 +123,13 @@ const Genres = () => {
         setSubgenre={setSubgenre}
       />
 
-      <Success setGenre={setGenre} setSubgenre={setSubgenre} setDes={setDes} />
+      <Success
+        setGenre={setGenre}
+        setSubgenre={setSubgenre}
+        setDes={setDes}
+        setCheckedDesc={setCheckedDesc}
+        setRequiredT={setRequiredT}
+      />
     </div>
   );
 };

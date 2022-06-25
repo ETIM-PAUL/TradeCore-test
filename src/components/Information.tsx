@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import { useAppDispatch } from "../app/hooks";
 import { setCurrentStep, setPreviousStep } from "../redux/setCurrentStepSlice";
@@ -23,6 +23,13 @@ const Information = ({
   const dispatch = useAppDispatch();
   const selector = useSelector;
   const step = selector((state: any) => state.CurrentStep.prevStep);
+  const [author, setAuthor] = useState("");
+  const [isbn, setIsbn] = useState("");
+  const [date, setDate] = useState(new Date());
+  const [pages, setPages] = useState(0);
+  const [format, setFormat] = useState("");
+  const [edition, setEdition] = useState("");
+  const [language, setLanguage] = useState("");
 
   function skipStartSlide() {
     if (step === "addNewSubGenre") {
@@ -34,13 +41,26 @@ const Information = ({
     }
   }
   function valiDateEntries() {
-    let bookDetails = { genre, subgenre, booktitle, bookDes };
+    let bookDetails = {
+      genre,
+      subgenre,
+      booktitle,
+      bookDes,
+      author,
+      isbn,
+      date,
+      pages,
+      format,
+      language,
+    };
     if (requiredT === true) {
       if (!booktitle) {
         alert("Please fill a book title");
       }
       if (requiredDes === true && !bookDes) {
         alert("please fill a description");
+      } else {
+        setRequiredT(false);
       }
     } else if (requiredT === false) {
       moveSlides(4, setSelected);
@@ -48,13 +68,20 @@ const Information = ({
       setBookDes("");
       setBookTitle("");
       setRequiredT(true);
+      setAuthor("");
+      setIsbn("");
+      setEdition("");
+      setLanguage("");
+      setPages(0);
+      setFormat("");
+      setDate(new Date());
       console.log(JSON.stringify(bookDetails));
     }
   }
   return (
     <div className="step form-information">
       <Progress />
-      <section>
+      <div className="section-form">
         <label>Book title</label>
         <input
           placeholder="Book title"
@@ -62,18 +89,20 @@ const Information = ({
           value={booktitle}
           onChange={(e) => {
             setBookTitle(e.target.value);
-            setRequiredT(false);
           }}
         />
 
         <div className="input">
           <label>Author</label>
-          <select className="select">
+          <select
+            className="select"
+            onChange={(e) => setAuthor(e.target.value)}
+          >
             <option value="" disabled selected hidden>
-              Author
+              Choose Author
             </option>
-            <option>Author 1</option>
-            <option>Author 2</option>
+            <option value="Author 1">Author 1</option>
+            <option value="Author 2">Author 2</option>
           </select>
         </div>
 
@@ -81,9 +110,9 @@ const Information = ({
         <input
           placeholder="ISBN"
           className="input-genre"
-          // value={booktitle}
+          value={isbn}
           onChange={(e) => {
-            // setBookTitle(e.target.value);
+            setIsbn(e.target.value);
           }}
         />
 
@@ -103,7 +132,8 @@ const Information = ({
           <input
             type="date"
             className="input-date"
-            // onChange={(e) => (addBook.date = new Date(e.target.value))}
+            value={date.getDate()}
+            onChange={(e) => setDate(new Date(e.target.value))}
           />
         </div>
 
@@ -113,18 +143,22 @@ const Information = ({
             placeholder="Number of pages"
             className="input-pages"
             type="number"
-            // onChange={(e) => (addBook.noOfPages = e.target.valueAsNumber)}
+            value={pages}
+            onChange={(e) => setPages(e.target.valueAsNumber)}
           />
         </div>
 
         <div className="input less-width">
           <label>Format</label>
-          <select className="format">
+          <select
+            className="format"
+            onChange={(e) => setFormat(e.target.value)}
+          >
             <option value="" disabled selected hidden>
               Format
             </option>
-            <option>Fiction</option>
-            <option>Non-fiction</option>
+            <option value="Fiction">Fiction</option>
+            <option value="Non-Fiction">Non-fiction</option>
           </select>
         </div>
 
@@ -137,14 +171,19 @@ const Information = ({
             <input
               placeholder="Edition"
               className="input-edit"
-              // onChange={(e) => (addBook.edition = e.target.value)}
+              value={edition}
+              onChange={(e) => setEdition(e.target.value)}
             />
-            <select placeholder="Edition language" className="edit-lang">
+            <select
+              placeholder="Edition language"
+              className="edit-lang"
+              onChange={(e) => setLanguage(e.target.value)}
+            >
               <option value="" disabled selected hidden>
                 Edition Language
               </option>
-              <option>English</option>
-              <option>Serbian</option>
+              <option value="English">English</option>
+              <option value="Serbian">Serbian</option>
             </select>
           </div>
         </div>
@@ -159,7 +198,7 @@ const Information = ({
             onChange={(e) => setBookDes(e.target.value)}
           />
         </div>
-      </section>
+      </div>
       <div className="nav-div">
         <div>
           <input
